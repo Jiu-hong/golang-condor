@@ -1,0 +1,10 @@
+{ partner_id: 1, 
+amount: 1, 
+dest_chain_id: "ethereum", 
+dest_amount: 90000, 
+deposit_id: 19, 
+src_token: "ec301e17c49ee4d18fc2d3f3766fce82389edac756b2f85aef31a8422414289a", 
+recipient: "Key::Account(a4628515772103ba1174bcf28cc99a8785d291c5192e142f53bd23ecfa55556a)", 
+refund_recipient: "Key::Account(0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20)", 
+dest_token: "Key::AddressableEntity(contract-a26eba1eed80d8248d15a619f2395b7b75e79baff4873a0486052dec1fa1b4c1)"
+}
