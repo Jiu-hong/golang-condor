@@ -9,7 +9,7 @@ import (
 	"github.com/make-software/ces-go-parser/v2"
 )
 
-func main3() {
+func main() {
 	testnetNodeAddress := "http://3.14.48.188:7777/rpc"
 	rpcClient := casper.NewRPCClient(casper.NewRPCHandler(testnetNodeAddress, http.DefaultClient))
 

@@ -10,7 +10,7 @@ import (
 	"github.com/make-software/ces-go-parser/v2"
 )
 
-func main2() {
+func main() {
 	contractHash, err := casper.NewHash("5f357dd77968a7408d4f5ccd6f31e72d7fdb98c0ad25bb1d093e1e9af2138d32")
 	fmt.Println("contractHash", contractHash)
 	if err != nil {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"casper/contract/helper"
 	"fmt"
 	"os"
 	"regexp"
@@ -22,6 +23,7 @@ type response2 struct {
 }
 
 func main() {
+	helper.Title()
 
 	data, err := os.ReadFile("./data/sse.json")
 
