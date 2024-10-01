@@ -89,7 +89,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	// log.Println("transactionRes: ", transactionRes.)
+	log.Println("transactionRes: ", transactionRes)
 
 	log.Println("transactionRes.Transaction: ", transactionRes.Transaction)
 	log.Println("transactionRes.ExecutionInfo: ", transactionRes.ExecutionInfo)
