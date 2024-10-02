@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"math/big"
 	"net/http"
@@ -39,18 +38,19 @@ func main() {
 		},
 	}
 
+	key1, err := key.NewKey("account-hash-bf06bdb1616050cea5862333d1f4787718f1011c95574ba92378419eefeeee59")
+	if err != nil {
+		panic(err)
+	}
 	args := &types.Args{}
-	args.AddArgument("name", *clvalue.NewCLString("Test")).
-		AddArgument("symbol", *clvalue.NewCLString("test")).
-		AddArgument("decimals", *clvalue.NewCLUint8(9)).
-		AddArgument("total_supply", *clvalue.NewCLUInt256(big.NewInt(1_000_000_000_000_000))).
-		AddArgument("events_mode", *clvalue.NewCLUint8(2)).
-		AddArgument("enable_mint_burn", *clvalue.NewCLUint8(1))
+	args.AddArgument("owner", clvalue.NewCLKey(key1)).
+		AddArgument("amount", *clvalue.NewCLUInt256(big.NewInt(1_000_000_000_000_000)))
+
 	contractHash, err := key.NewHash("4c1c6de608510bf352dd4be09999f32d893267b5f7e6d4e493913b01402f7017")
 	if err != nil {
 		panic(err)
 	}
-	ep := "transfer"
+	ep := "mint"
 	body := types.TransactionV1Body{
 		Args: args,
 		Target: types.TransactionTarget{
@@ -77,14 +77,6 @@ func main() {
 		panic(err)
 	}
 
-	b, err := json.Marshal(transaction)
-	if err != nil {
-		fmt.Printf("Error: %s", err)
-		return
-	}
-	fmt.Println(string(b))
-	// log.Println("transaction", transaction)
-
 	rpcClient := rpc.NewClient(rpc.NewHttpHandler(utils.ENDPOINT, http.DefaultClient))
 	res, err := rpcClient.PutTransactionV1(context.Background(), *transaction)
 	if err != nil {
@@ -98,9 +90,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	// log.Println("transactionRes: ", transactionRes.)
-
-	log.Println("transactionRes.Transaction: ", transactionRes.Transaction)
-	log.Println("transactionRes.ExecutionInfo: ", transactionRes.ExecutionInfo)
+	jsonResult, err := json.Marshal(transactionRes)
+	if err != nil {
+		panic(err)
+	}
+	log.Println("Transaction info:", string(jsonResult))
 
 }

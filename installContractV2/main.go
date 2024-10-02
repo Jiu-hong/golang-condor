@@ -6,7 +6,6 @@ import (
 	"log"
 	"math/big"
 	"net/http"
-	"os"
 	"time"
 
 	"casper/contract/utils"
@@ -27,7 +26,7 @@ func main() {
 	header := types.TransactionV1Header{
 		ChainName: utils.NETWORKNAME,
 		Timestamp: types.Timestamp(time.Now().UTC()),
-		TTL:       180000000000,
+		TTL:       utils.TTL,
 		InitiatorAddr: types.InitiatorAddr{
 			PublicKey: &pubKey,
 		},
@@ -38,10 +37,9 @@ func main() {
 		},
 	}
 
-	moduleBytes, err := os.ReadFile(utils.ContractPath)
-	if err != nil {
-		panic(err)
-	}
+	contractPath := "/home/ubuntu/caspereco/cep18/v2/cep18.wasm"
+	moduleBytes := utils.GetmoduleBytes(contractPath)
+
 	args := &types.Args{}
 	args.AddArgument("name", *clvalue.NewCLString("Test")).
 		AddArgument("symbol", *clvalue.NewCLString("test")).
@@ -83,15 +81,4 @@ func main() {
 	}
 
 	log.Println("TransactionV1 submitted:", res.TransactionHash.TransactionV1)
-
-	time.Sleep(time.Second * 10)
-	transactionRes, err := rpcClient.GetTransactionByTransactionHash(context.Background(), res.TransactionHash.TransactionV1.ToHex())
-	if err != nil {
-		panic(err)
-	}
-	log.Println("transactionRes: ", transactionRes)
-
-	log.Println("transactionRes.Transaction: ", transactionRes.Transaction)
-	log.Println("transactionRes.ExecutionInfo: ", transactionRes.ExecutionInfo)
-
 }

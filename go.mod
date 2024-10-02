@@ -3,7 +3,7 @@ module casper/contract
 go 1.19
 
 require (
-	github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1
+	github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1.0.20241002083618-72301653c611
 	github.com/make-software/ces-go-parser/v2 v2.0.0-beta
 	gopkg.in/yaml.v3 v3.0.1
 )

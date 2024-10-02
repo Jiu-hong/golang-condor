@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"math/big"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/make-software/casper-go-sdk/v2/casper"
@@ -29,10 +28,8 @@ func main() {
 	header.Timestamp = types.Timestamp(time.Now())
 	payment := types.StandardPayment(big.NewInt(4000000000))
 
-	moduleBytes, err := os.ReadFile(utils.ContractPath)
-	if err != nil {
-		panic(err)
-	}
+	contractPath := "/home/ubuntu/caspereco/cep18/v2/cep18.wasm"
+	moduleBytes := utils.GetmoduleBytes(contractPath)
 
 	args := &casper.Args{}
 	args.AddArgument("name", *clvalue.NewCLString("Test")).
@@ -62,5 +59,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("deploy hash", deploy.Hash.ToHex())
+	fmt.Println("deploy hash submitted:", deploy.Hash.ToHex())
 }
