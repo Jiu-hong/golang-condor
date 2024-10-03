@@ -6,8 +6,6 @@ github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1/go.mod h1:hyedUtir6IdtD/7lIxGeC
 github.com/golang/mock v1.6.0 h1:ErTB+efbowRARo13NNdxyJji2egdxLGQhRaY+DUumQc=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
-github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1 h1:55elEI/wbnWhum0KAU+TVBKqc6apEFlAOp6u8lB7ThU=
-github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1/go.mod h1:xPZs6iVBbWxbYJ+QzLxp7H1bY6a3AGvPZzX9vMrr8Lo=
 github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1.0.20241002083618-72301653c611 h1:gfv4MVIsAKijNi1HO47Uc1MHPsy7efWgANcb3TnXJKw=
 github.com/make-software/casper-go-sdk/v2 v2.0.2-beta1.0.20241002083618-72301653c611/go.mod h1:xPZs6iVBbWxbYJ+QzLxp7H1bY6a3AGvPZzX9vMrr8Lo=
 github.com/make-software/ces-go-parser/v2 v2.0.0-beta h1:DEBTT3HrzGMvVdCzhycd7p2Xd+QQwEQfs9E/4vkI21Y=
