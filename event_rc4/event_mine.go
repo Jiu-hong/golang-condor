@@ -23,6 +23,9 @@ func main() {
 		panic(err)
 	}
 
+	// for rc4 only since
+	// AddressableEntity functionality is enabled only for rc4,
+	// and will not be used in the future versions for some time.
 	parser, err := ces.NewParserWithVersion(rpcClient, []casper.Hash{contractHash}, ces.Casper2xRC4)
 	if err != nil {
 		panic(err)
