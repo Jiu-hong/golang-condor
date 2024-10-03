@@ -14,30 +14,27 @@ func main() {
 	rpcClient := casper.NewRPCClient(casper.NewRPCHandler(testnetNodeAddress, http.DefaultClient))
 
 	ctx := context.Background()
-	deployResult, err := rpcClient.GetDeploy(ctx, "83c5e2e10133946997a7491ceaf94ff269005a7e9c8ccb069aa9ce2b8b686ae1")
+	transactionResult, err := rpcClient.GetTransactionByTransactionHash(ctx, "f8f41e0af65d775898816ecc103f301fa21e42f15bec3f995214e3d7be71e472")
+	if err != nil {
+		panic(err)
+	}
+	contractHash, err := casper.NewHash("84c52e578dffd9bf39949d0d0e38c5eaa09c8299a7b2956a5bbc3c51780598c4")
 	if err != nil {
 		panic(err)
 	}
 
-	contractHash, err := casper.NewHash("d95b1ccaf999c94e80b8a59ea8607c62eceb7783bf558661702e3fc7ea43dfee")
+	parser, err := ces.NewParserWithVersion(rpcClient, []casper.Hash{contractHash}, ces.Casper2xRC4)
 	if err != nil {
 		panic(err)
 	}
 
-	parser, err := ces.NewParser(rpcClient, []casper.Hash{contractHash})
+	parseResults, err := parser.ParseExecutionResults(transactionResult.ExecutionInfo.ExecutionResult)
 	if err != nil {
-		fmt.Println("there")
-		panic(err)
-	}
-
-	parseResults, err := parser.ParseExecutionResults(deployResult.ExecutionResults.ExecutionResult)
-	if err != nil {
-		fmt.Println("here")
 		panic(err)
 	}
 	for _, result := range parseResults {
 		if result.Error != nil {
-			panic(err)
+			panic(result.Error)
 		}
 		fmt.Println(result.Event)
 	}
