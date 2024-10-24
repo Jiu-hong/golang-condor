@@ -29,17 +29,19 @@ func main() {
 	// accountHash := pubKey.AccountHash()
 
 	// account hash to be checked CEP18 balance
-	accountHash, err := casper.NewAccountHash("account-hash-5cc9364fc67616a74bd51122a439415f9b364098ea488ec833e69c4431a997e9")
+	accountHash, err := casper.NewAccountHash("account-hash-80ac9361496a02b1408cc019a7876d052ed8d00cc34f4fa8728e9e2a781425a6")
 	if err != nil {
 		panic(err)
 	}
 	// === create dictionary_item_key ===
-	prefixByte := []byte{0} // 0 for account ; 1 for contract package
+	prefixByte := []byte{0} // 0 for account account-hash-xxx; 1 for contract package
+	// prefixByte := []byte{17, 01} // entity account entity-account-xxx
 	item_key_bytes := append(prefixByte, accountHash.Bytes()...)
+	fmt.Println("item_key_bytes", item_key_bytes)
 	item_key := b64.StdEncoding.EncodeToString(item_key_bytes)
 
 	// balance uref from the contract named_key
-	balances_uref := "uref-fb6d7dd568bb45bd7433498c37fabf0883f8e5700c08a6541530d3425f66f17f-007"
+	balances_uref := "uref-8692170700772d9cf6e91427a8b1738a42066158ce7820c4817f722891682e3f-007"
 
 	// get balance
 	res, err := client.GetDictionaryItem(context.Background(), &stateRootHash, balances_uref, item_key)
