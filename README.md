@@ -39,3 +39,15 @@ go run getTransaction/main.go
 ```
 go run getDeploy/main.go
 ```
+
+### Query global state
+
+```
+go run queryGlobalState/main.go
+```
+
+### Query dictionry value
+
+```
+go run queryDictionary/main.go
+```
