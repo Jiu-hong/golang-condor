@@ -1,4 +1,4 @@
 To get exact commit hash
-go get github.com/make-software/casper-go-sdk/v2@72301653c6115d0b026e340d7873a54cfa7a7cc1
+go get github.com/make-software/casper-go-sdk/v2@a317a9905ccda5cdb65775b1ece9878529c40c5f
 ces-go-parser for rc4:
 go get github.com/make-software/ces-go-parser/v2@0c931e0ad911e751ab163f88dd4d1acfa1f4f6a1

@@ -38,7 +38,7 @@ func main() {
 		},
 	}
 
-	key1, err := key.NewKey("account-hash-bf06bdb1616050cea5862333d1f4787718f1011c95574ba92378419eefeeee59")
+	key1, err := key.NewKey("account-hash-5cc9364fc67616a74bd51122a439415f9b364098ea488ec833e69c4431a997e9")
 	if err != nil {
 		panic(err)
 	}
